@@ -5,11 +5,11 @@ data "aws_subnets" "private" {
   }
 
   tags = {
-    Tier = "Exposure"
+    Exposure = "private"
   }
 }
 
 data "aws_subnet" "private" {
-  for_each = toset(data.aws_subnets.example.ids)
+  for_each = toset(data.aws_subnets.private.ids)
   id       = each.value
 }
